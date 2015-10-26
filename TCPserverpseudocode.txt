@@ -1,0 +1,12 @@
+# one way of designing your server
+
+
+ss = socket()
+ss.bind()
+ss.listen()
+inf loop:
+    cs = ss.accept()
+    comm_loop:
+        cs.recv()/cs.send()
+    cs.close()
+ss.close()
