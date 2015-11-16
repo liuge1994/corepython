@@ -82,59 +82,91 @@
 # s['x'] = temp
 # print(s['x'])
 
-import sys, shelve
+# import sys, shelve
 
-def store_person(db):
-	"""
-	Query user for data and stroe it in the shelf object
-	"""
+# def store_person(db):
+# 	"""
+# 	Query user for data and stroe it in the shelf object
+# 	"""
 
-	pid = int(input('Enter unique ID number: '))
-	person = {}
-	person['name'] = input('Enter name: ')
-	person['age'] = input('Enter age: ')
-	person['phone'] = input('Enter phone number: ')
+# 	pid = int(input('Enter unique ID number: '))
+# 	person = {}
+# 	person['name'] = input('Enter name: ')
+# 	person['age'] = input('Enter age: ')
+# 	person['phone'] = input('Enter phone number: ')
 
-	db[pid] = person
+# 	db[pid] = person
 
-def lookup_person(db):
-	"""
-	Query user for ID and desired field. and fetch the corresponding data from
-	the shelf object
-	"""
+# def lookup_person(db):
+# 	"""
+# 	Query user for ID and desired field. and fetch the corresponding data from
+# 	the shelf object
+# 	"""
 
-	pid = int(input('Enter ID number: '))
-	field = input('What would you like to know? (name, age, phone) ')
-	field = field.strip().lower()
-	print(field.capitalize() +  ':', \
-		db[pid][field])
+# 	pid = int(input('Enter ID number: '))
+# 	field = input('What would you like to know? (name, age, phone) ')
+# 	field = field.strip().lower()
+# 	print(field.capitalize() +  ':', \
+# 		db[pid][field])
 
-def print_help():
-	print('The available commands are: ')
-	print('store : Stores information about a person')
-	print('looup : Looks up a person from ID number')
-	print('quit  : Save changes and exit')
-	print('?     : Print this message')
+# def print_help():
+# 	print('The available commands are: ')
+# 	print('store : Stores information about a person')
+# 	print('looup : Looks up a person from ID number')
+# 	print('quit  : Save changes and exit')
+# 	print('?     : Print this message')
 
-def enter_command():
-	cmd = input('Enter command (? for help):')
-	cmd = cmd.strip().lower()
-	return cmd
+# def enter_command():
+# 	cmd = input('Enter command (? for help):')
+# 	cmd = cmd.strip().lower()
+# 	return cmd
 
-def main():
-	database = shelve.open('C://database.dat') # You may want to change this name
-	try:
-		while True:
-			cmd = enter_command()
-			if cmd == 'store':
-				store_person(database)
-			elif cmd == 'lookup':
-				lookup_person(database)
-			elif cmd == '?':
-				print_help()
-			elif cmd == 'quit':
-				return
-	finally:
-		database.close()
+# def main():
+# 	database = shelve.open('C://database.dat') # You may want to change this name
+# 	try:
+# 		while True:
+# 			cmd = enter_command()
+# 			if cmd == 'store':
+# 				store_person(database)
+# 			elif cmd == 'lookup':
+# 				lookup_person(database)
+# 			elif cmd == '?':
+# 				print_help()
+# 			elif cmd == 'quit':
+# 				return
+# 	finally:
+# 		database.close()
 
-if __name__ == '__main__': main()
+# if __name__ == '__main__': main()
+
+import re
+
+# some_text = 'alpha, beta,,,,gamma delta'
+# a = re.split('[, ]+', some_text)
+# print(a)
+# print(re.split('[, ]+', some_text, maxsplit=2))
+# print(re.split('[, ]+', some_text, maxsplit=1))
+
+# pat = '[a-zA-Z]+'
+# text = '"Hm... Err -- are you sure?" he said, sounding insecure.'
+# print(re.findall(pat, text))
+
+# pat = r'[.?\-",]+'
+# print(re.findall(pat, text))
+
+# pat = '{name}'
+# text = 'Dear {name}...'
+# print(re.sub(pat, 'Mr. Gumby', text))
+
+# print(re.escape('www.python.org'))
+# print(re.escape('But where is the ambiguity?'))
+
+# m = re.match(r'www\.(.*)\..{3}', 'www.python.org')
+# print(m.group(1))
+# print(m.start(1))
+# print(m.end(1))
+# print(m.span(1))
+
+emphasis_pattern = r'\*([^\*]+)\*'
+
+print(re.sub(emphasis_pattern, r'<em>\1</em>', 'Hello, *world*!'))
